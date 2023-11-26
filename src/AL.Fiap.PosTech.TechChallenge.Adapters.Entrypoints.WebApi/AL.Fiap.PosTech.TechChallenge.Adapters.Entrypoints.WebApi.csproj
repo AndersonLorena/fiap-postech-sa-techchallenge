@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>b96b0e27-cdc3-4127-a443-401e989454d7</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..</DockerfileContext>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    <PackageReference Include="MediatR" Version="12.0.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.5" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AL.Fiap.PosTech.TechChallenge.Adapters.EntityFramework\AL.Fiap.PosTech.TechChallenge.Adapters.EntityFramework.csproj" />
+    <ProjectReference Include="..\AL.Fiap.PosTech.TechChallenge.Application\AL.Fiap.PosTech.TechChallenge.Application.csproj" />
+    <ProjectReference Include="..\AL.Fiap.PosTech.TechChallenge.Domain\AL.Fiap.PosTech.TechChallenge.Domain.csproj" />
+    <ProjectReference Include="..\AL.Fiap.PosTech.TechChallenge.Ports\AL.Fiap.PosTech.TechChallenge.Ports.csproj" />
+  </ItemGroup>
+
+</Project>
