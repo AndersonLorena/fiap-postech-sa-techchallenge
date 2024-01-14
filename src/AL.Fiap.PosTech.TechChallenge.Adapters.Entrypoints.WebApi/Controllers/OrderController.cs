@@ -5,12 +5,9 @@ using AL.Fiap.PosTech.TechChallenge.Ports.Queries;
 using AL.Fiap.PosTech.TechChallenge.Ports.Queries.Dtos;
 using AutoMapper;
 using MediatR;
-using Microsoft.AspNetCore.Mvc;
 
 namespace AL.Fiap.PosTech.TechChallenge.Adapters.Entrypoints.WebApi.Controllers
 {
-    [ApiController]
-    [Route("[controller]")]
     public sealed class OrderController : CrudBaseController<
         CreateOrderCommand,
         OrderDto,
