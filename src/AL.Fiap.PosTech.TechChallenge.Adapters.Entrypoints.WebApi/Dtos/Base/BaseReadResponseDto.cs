@@ -1,6 +1,6 @@
-﻿namespace AL.Fiap.PosTech.TechChallenge.Ports.Queries.Dtos.Base
+﻿namespace AL.Fiap.PosTech.TechChallenge.Adapters.Entrypoints.WebApi.Dtos.Base
 {
-    public abstract class BaseDto
+    public abstract class BaseReadResponseDto
     {
         public int Id { get; set; }
 

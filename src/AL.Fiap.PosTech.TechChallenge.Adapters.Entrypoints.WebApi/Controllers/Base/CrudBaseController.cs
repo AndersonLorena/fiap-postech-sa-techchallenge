@@ -1,7 +1,7 @@
-﻿using AL.Fiap.PosTech.TechChallenge.Domain.Entities.Base;
+﻿using AL.Fiap.PosTech.TechChallenge.Adapters.Entrypoints.WebApi.Dtos.Base;
+using AL.Fiap.PosTech.TechChallenge.Domain.Entities.Base;
 using AL.Fiap.PosTech.TechChallenge.Ports.Commands.Base;
 using AL.Fiap.PosTech.TechChallenge.Ports.Queries;
-using AL.Fiap.PosTech.TechChallenge.Ports.Queries.Dtos.Base;
 using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -12,7 +12,7 @@ namespace AL.Fiap.PosTech.TechChallenge.Adapters.Entrypoints.WebApi.Controllers.
     [Route("[controller]")]
     public abstract class CrudBaseController<TCreateCommand, TReadDto, TUpdateCommand, TDeleteCommand, TEntity> : ControllerBase
        where TCreateCommand : CreateCommandBase
-       where TReadDto : BaseDto
+       where TReadDto : BaseReadResponseDto
        where TUpdateCommand : UpdateCommandBase
        where TDeleteCommand : DeleteCommandBase
        where TEntity : BaseEntity
