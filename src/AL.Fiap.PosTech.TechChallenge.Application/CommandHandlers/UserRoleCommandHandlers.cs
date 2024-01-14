@@ -1,10 +1,9 @@
 ﻿using AL.Fiap.PosTech.TechChallenge.Application.CommandHandlers.Base;
 using AL.Fiap.PosTech.TechChallenge.Domain.Entities;
 using AL.Fiap.PosTech.TechChallenge.Domain.Repositories;
-using AL.Fiap.PosTech.TechChallenge.Ports.Commands.Base;
+using AL.Fiap.PosTech.TechChallenge.Ports.Commands;
 using AL.Fiap.PosTech.TechChallenge.Ports.Queries;
 using AutoMapper;
-using FluentValidation;
 
 namespace AL.Fiap.PosTech.TechChallenge.Application.CommandHandlers
 {
@@ -41,44 +40,5 @@ namespace AL.Fiap.PosTech.TechChallenge.Application.CommandHandlers
                 queryRepository,
                 mapper)
         { }
-    }
-
-    public sealed class CreateUserRoleCommand : CreateCommandBase
-    {
-        public int? UserId { get; set; }
-
-        public int? RoleId { get; set; }
-    }
-
-    public sealed class CreateUserRoleCommandValidator : AbstractValidator<CreateUserRoleCommand>
-    {
-        public CreateUserRoleCommandValidator()
-        {
-        }
-    }
-
-    public sealed class UpdateUserRoleCommand : UpdateCommandBase
-    {
-        public int? UserId { get; set; }
-
-        public int? RoleId { get; set; }
-    }
-
-    public sealed class UpdateUserRoleCommandValidator : AbstractValidator<UpdateUserRoleCommand>
-    {
-        public UpdateUserRoleCommandValidator()
-        {
-        }
-    }
-
-    public sealed class DeleteUserRoleCommand : DeleteCommandBase
-    {
-    }
-
-    public sealed class DeleteUserRoleCommandValidator : AbstractValidator<DeleteUserRoleCommand>
-    {
-        public DeleteUserRoleCommandValidator()
-        {
-        }
     }
 }

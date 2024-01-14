@@ -1,11 +1,10 @@
 ﻿using AL.Fiap.PosTech.TechChallenge.Application.CommandHandlers.Base;
 using AL.Fiap.PosTech.TechChallenge.Domain.Entities;
 using AL.Fiap.PosTech.TechChallenge.Domain.Repositories;
-using AL.Fiap.PosTech.TechChallenge.Ports.Commands.Base;
+using AL.Fiap.PosTech.TechChallenge.Ports.Commands;
 using AL.Fiap.PosTech.TechChallenge.Ports.Helpers;
 using AL.Fiap.PosTech.TechChallenge.Ports.Queries;
 using AutoMapper;
-using FluentValidation;
 
 namespace AL.Fiap.PosTech.TechChallenge.Application.CommandHandlers
 {
@@ -64,54 +63,5 @@ namespace AL.Fiap.PosTech.TechChallenge.Application.CommandHandlers
         public string Login { get; set; } = null!;
 
         public string Password { get; set; } = null!;
-    }
-
-    public sealed class CreateUserCommand : CreateCommandBase
-    {
-        public string Name { get; set; } = null!;
-
-        public string Nickname { get; set; } = null!;
-
-        public string Login { get; set; } = null!;
-
-        public string Password { get; set; } = null!;
-
-        public new int? CreatedById { get; set; }
-    }
-
-    public sealed class CreateUserCommandValidator : AbstractValidator<CreateUserCommand>
-    {
-        public CreateUserCommandValidator()
-        {
-        }
-    }
-
-    public sealed class UpdateUserCommand : UpdateCommandBase
-    {
-        public string Name { get; set; } = null!;
-
-        public string Nickname { get; set; } = null!;
-
-        public string Login { get; set; } = null!;
-
-        public string Password { get; set; } = null!;
-    }
-
-    public sealed class UpdateUserCommandValidator : AbstractValidator<UpdateUserCommand>
-    {
-        public UpdateUserCommandValidator()
-        {
-        }
-    }
-
-    public sealed class DeleteUserCommand : DeleteCommandBase
-    {
-    }
-
-    public sealed class DeleteUserCommandValidator : AbstractValidator<DeleteUserCommand>
-    {
-        public DeleteUserCommandValidator()
-        {
-        }
     }
 }

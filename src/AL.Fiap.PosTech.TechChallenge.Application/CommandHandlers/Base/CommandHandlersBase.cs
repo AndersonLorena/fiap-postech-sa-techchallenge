@@ -28,10 +28,10 @@ namespace AL.Fiap.PosTech.TechChallenge.Application.CommandHandlers.Base
             request.CreatedAt = DateTime.UtcNow;
             request.UpdatedAt = DateTime.UtcNow;
 
-            var dto = _mapper.Map<TEntity>(request);
-            await _persistenceRepository.AddAsync(dto);
+            var entity = _mapper.Map<TEntity>(request);
+            await _persistenceRepository.AddAsync(entity);
 
-            return dto.Id;
+            return entity.Id;
         }
     }
 
