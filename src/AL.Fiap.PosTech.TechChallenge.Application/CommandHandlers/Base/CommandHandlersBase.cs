@@ -8,8 +8,8 @@ using MediatR;
 namespace AL.Fiap.PosTech.TechChallenge.Application.CommandHandlers.Base
 {
     public abstract class CreateCommandBaseHandler<TCreateCommand, TEntity> :
-        IRequestHandler<TCreateCommand, int>
-        where TCreateCommand : CreateCommandBase
+        IRequestHandler<TCreateCommand, TEntity>
+        where TCreateCommand : CreateCommandBase<TEntity>
         where TEntity : BaseEntity
     {
         protected readonly IPersistenceRepository<TEntity> _persistenceRepository;
@@ -23,15 +23,12 @@ namespace AL.Fiap.PosTech.TechChallenge.Application.CommandHandlers.Base
             _mapper = mapper;
         }
 
-        public virtual async Task<int> Handle(TCreateCommand request, CancellationToken cancellationToken)
+        public virtual async Task<TEntity> Handle(TCreateCommand request, CancellationToken cancellationToken)
         {
-            request.CreatedAt = DateTime.UtcNow;
-            request.UpdatedAt = DateTime.UtcNow;
-
             var entity = _mapper.Map<TEntity>(request);
             await _persistenceRepository.AddAsync(entity);
 
-            return entity.Id;
+            return entity;
         }
     }
 
@@ -60,7 +57,7 @@ namespace AL.Fiap.PosTech.TechChallenge.Application.CommandHandlers.Base
     }
 
     public abstract class UpdateCommandBaseHandler<TUpdateCommand, TEntity> :
-        IRequestHandler<TUpdateCommand, int>
+        IRequestHandler<TUpdateCommand, BaseEntity>
         where TUpdateCommand : UpdateCommandBase
         where TEntity : BaseEntity
     {
@@ -75,14 +72,12 @@ namespace AL.Fiap.PosTech.TechChallenge.Application.CommandHandlers.Base
             _mapper = mapper;
         }
 
-        public virtual async Task<int> Handle(TUpdateCommand request, CancellationToken cancellationToken)
+        public virtual async Task<BaseEntity> Handle(TUpdateCommand request, CancellationToken cancellationToken)
         {
-            request.UpdatedAt = DateTime.UtcNow;
+            var entity = _mapper.Map<TEntity>(request);
+            await _persistenceRepository.UpdateAsync(entity);
 
-            var dto = _mapper.Map<TEntity>(request);
-            await _persistenceRepository.UpdateAsync(dto);
-
-            return dto.Id;
+            return entity;
         }
     }
 

@@ -2,7 +2,7 @@
 {
     public abstract class BaseEntity
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         public DateTime CreatedAt { get; set; }
 
@@ -12,8 +12,32 @@
 
         public DateTime? UpdatedAt { get; set; }
 
-        public virtual int? UpdatedById { get; set; }
+        public virtual Guid UpdatedById { get; set; }
 
         public virtual UserEntity? UpdatedBy { get; set; }
+
+        public BaseEntity()
+        {
+        }
+
+        public BaseEntity(UserEntity createdBy)
+        {
+            Id = Guid.NewGuid();
+            CreatedAt = DateTime.Now;
+            CreatedBy = createdBy;
+        }
+
+        public BaseEntity(Guid id, UserEntity updatedBy)
+        {
+            Id = id;
+            UpdatedAt = updatedBy.UpdatedAt;
+            UpdatedById = updatedBy.Id;
+            UpdatedBy = updatedBy;
+        }
+
+        protected void ChangeUpdate()
+        {
+
+        }
     }
 }

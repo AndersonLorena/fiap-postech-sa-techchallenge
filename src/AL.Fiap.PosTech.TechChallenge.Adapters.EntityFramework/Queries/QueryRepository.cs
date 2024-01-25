@@ -15,7 +15,7 @@ namespace AL.Fiap.PosTech.TechChallenge.Adapters.EntityFramework.Queries
             }
         }
 
-        public async Task<T> GetByIdAsync(int id)
+        public async Task<T> GetByIdAsync(Guid id)
         {
             using (var context = new TechChallengeDbContext())
             {

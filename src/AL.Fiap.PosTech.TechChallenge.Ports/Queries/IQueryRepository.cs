@@ -6,6 +6,6 @@ namespace AL.Fiap.PosTech.TechChallenge.Ports.Queries
     {
         Task<IEnumerable<T>> GetAllAsync();
 
-        Task<T> GetByIdAsync(int id);
+        Task<T> GetByIdAsync(Guid id);
     }
 }

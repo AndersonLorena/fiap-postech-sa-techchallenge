@@ -1,11 +1,12 @@
-﻿using AL.Fiap.PosTech.TechChallenge.Ports.Commands.Base;
+﻿using AL.Fiap.PosTech.TechChallenge.Domain.Entities;
+using AL.Fiap.PosTech.TechChallenge.Ports.Commands.Base;
 using FluentValidation;
 
 namespace AL.Fiap.PosTech.TechChallenge.Ports.Commands
 {
-    public sealed class CreateOrderItemCommand : CreateCommandBase
+    public sealed class CreateOrderItemCommand : CreateCommandBase<OrderItemEntity>
     {
-        public int OrderId { get; set; }
+        public Guid? OrderId { get; set; }
 
         public int ProductId { get; set; }
 
@@ -21,7 +22,7 @@ namespace AL.Fiap.PosTech.TechChallenge.Ports.Commands
         }
     }
 
-    public sealed class UpdateOrderItemCommand : UpdateCommandBase
+    public sealed class UpdateOrderItemCommand : UpdateCommandBase<OrderItemEntity>
     {
         public int OrderId { get; set; }
 

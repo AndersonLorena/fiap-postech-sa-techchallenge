@@ -15,4 +15,8 @@
     <ProjectReference Include="..\AL.Fiap.PosTech.TechChallenge.Domain\AL.Fiap.PosTech.TechChallenge.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Commands\CommandDtos\" />
+  </ItemGroup>
+
 </Project>

@@ -3,7 +3,7 @@ using AL.Fiap.PosTech.TechChallenge.Domain.ValueObjects;
 
 namespace AL.Fiap.PosTech.TechChallenge.Domain.Entities
 {
-    public partial class UserEntity : BaseEntity
+    public class UserEntity : BaseEntity
     {
         public string Name { get; set; } = null!;
 

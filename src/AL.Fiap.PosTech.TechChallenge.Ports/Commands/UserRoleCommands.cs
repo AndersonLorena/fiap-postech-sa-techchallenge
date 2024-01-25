@@ -1,9 +1,10 @@
-﻿using AL.Fiap.PosTech.TechChallenge.Ports.Commands.Base;
+﻿using AL.Fiap.PosTech.TechChallenge.Domain.Entities;
+using AL.Fiap.PosTech.TechChallenge.Ports.Commands.Base;
 using FluentValidation;
 
 namespace AL.Fiap.PosTech.TechChallenge.Ports.Commands
 {
-    public sealed class CreateUserRoleCommand : CreateCommandBase
+    public sealed class CreateUserRoleCommand : CreateCommandBase<UserRoleEntity>
     {
         public int? UserId { get; set; }
 
@@ -17,7 +18,7 @@ namespace AL.Fiap.PosTech.TechChallenge.Ports.Commands
         }
     }
 
-    public sealed class UpdateUserRoleCommand : UpdateCommandBase
+    public sealed class UpdateUserRoleCommand : UpdateCommandBase<UserRoleEntity>
     {
         public int? UserId { get; set; }
 

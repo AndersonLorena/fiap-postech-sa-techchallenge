@@ -1,9 +1,10 @@
-﻿using AL.Fiap.PosTech.TechChallenge.Ports.Commands.Base;
+﻿using AL.Fiap.PosTech.TechChallenge.Domain.Entities;
+using AL.Fiap.PosTech.TechChallenge.Ports.Commands.Base;
 using FluentValidation;
 
 namespace AL.Fiap.PosTech.TechChallenge.Ports.Commands
 {
-    public sealed class CreateProductCommand : CreateCommandBase
+    public sealed class CreateProductCommand : CreateCommandBase<ProductEntity>
     {
         public string Name { get; set; } = null!;
 
@@ -23,7 +24,7 @@ namespace AL.Fiap.PosTech.TechChallenge.Ports.Commands
         }
     }
 
-    public sealed class UpdateProductCommand : UpdateCommandBase
+    public sealed class UpdateProductCommand : UpdateCommandBase<ProductEntity>
     {
         public string Name { get; set; } = null!;
 

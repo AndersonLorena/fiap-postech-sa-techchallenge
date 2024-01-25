@@ -23,7 +23,7 @@ namespace AL.Fiap.PosTech.TechChallenge.Application.CommandHandlers
             _hashHelper = hashHelper;
         }
 
-        public override async Task<int> Handle(CreateUserCommand request, CancellationToken cancellationToken)
+        public override async Task<UserEntity> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
             request.Password = _hashHelper.HashPassword(_mapper.Map<UserStructureToHash>(request), request.Password);
             return await base.Handle(request, cancellationToken);
