@@ -2,19 +2,19 @@
 using AL.Fiap.PosTech.TechChallenge.Domain.Entities;
 using AL.Fiap.PosTech.TechChallenge.Domain.Repositories;
 using AL.Fiap.PosTech.TechChallenge.Ports.Commands;
-using AL.Fiap.PosTech.TechChallenge.Ports.Helpers;
-using AL.Fiap.PosTech.TechChallenge.Ports.Queries;
+using AL.Fiap.PosTech.TechChallenge.Ports.Interfaces.Queries;
+using AL.Fiap.PosTech.TechChallenge.Ports.Interfaces.Services;
 using AutoMapper;
 
 namespace AL.Fiap.PosTech.TechChallenge.Application.CommandHandlers
 {
     public class CreateUserCommandsHandler : CreateCommandBaseHandler<CreateUserCommand, UserEntity>
     {
-        private readonly IHashHelper<UserStructureToHash> _hashHelper;
+        private readonly IHashService<UserStructureToHash> _hashHelper;
 
         public CreateUserCommandsHandler(
             IPersistenceRepository<UserEntity> persistenceRepository,
-            IHashHelper<UserStructureToHash> hashHelper,
+            IHashService<UserStructureToHash> hashHelper,
             IMapper mapper)
             : base(
                 persistenceRepository,
@@ -49,7 +49,6 @@ namespace AL.Fiap.PosTech.TechChallenge.Application.CommandHandlers
             IMapper mapper)
             : base(
                 persistenceRepository,
-                queryRepository,
                 mapper)
         { }
     }

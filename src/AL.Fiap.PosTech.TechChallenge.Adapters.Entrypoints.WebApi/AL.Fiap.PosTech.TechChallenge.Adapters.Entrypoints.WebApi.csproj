@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AL.Fiap.PosTech.TechChallenge.Adapters.Drivens.HashService\AL.Fiap.PosTech.TechChallenge.Adapters.Drivens.HashService.csproj" />
     <ProjectReference Include="..\AL.Fiap.PosTech.TechChallenge.Adapters.EntityFramework\AL.Fiap.PosTech.TechChallenge.Adapters.EntityFramework.csproj" />
     <ProjectReference Include="..\AL.Fiap.PosTech.TechChallenge.Application\AL.Fiap.PosTech.TechChallenge.Application.csproj" />
     <ProjectReference Include="..\AL.Fiap.PosTech.TechChallenge.Domain\AL.Fiap.PosTech.TechChallenge.Domain.csproj" />

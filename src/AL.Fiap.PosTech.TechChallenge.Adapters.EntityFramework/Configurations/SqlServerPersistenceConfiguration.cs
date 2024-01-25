@@ -2,7 +2,7 @@
 using AL.Fiap.PosTech.TechChallenge.Adapters.EntityFramework.Queries;
 using AL.Fiap.PosTech.TechChallenge.Adapters.EntityFramework.Repositories;
 using AL.Fiap.PosTech.TechChallenge.Domain.Repositories;
-using AL.Fiap.PosTech.TechChallenge.Ports.Queries;
+using AL.Fiap.PosTech.TechChallenge.Ports.Interfaces.Queries;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

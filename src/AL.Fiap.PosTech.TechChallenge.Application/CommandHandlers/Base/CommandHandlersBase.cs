@@ -1,7 +1,6 @@
 ﻿using AL.Fiap.PosTech.TechChallenge.Domain.Entities.Base;
 using AL.Fiap.PosTech.TechChallenge.Domain.Repositories;
 using AL.Fiap.PosTech.TechChallenge.Ports.Commands.Base;
-using AL.Fiap.PosTech.TechChallenge.Ports.Queries;
 using AutoMapper;
 using MediatR;
 
@@ -26,39 +25,15 @@ namespace AL.Fiap.PosTech.TechChallenge.Application.CommandHandlers.Base
         public virtual async Task<TEntity> Handle(TCreateCommand request, CancellationToken cancellationToken)
         {
             var entity = _mapper.Map<TEntity>(request);
-            await _persistenceRepository.AddAsync(entity);
+            await _persistenceRepository.SaveAsync(entity);
 
             return entity;
         }
     }
 
-    public abstract class ReadCommandBaseHandler<TReadCommand, TReadCommandResponse, TEntity> :
-        IRequestHandler<TReadCommand, TReadCommandResponse>
-        where TReadCommand : IRequest<TReadCommandResponse>
-        where TReadCommandResponse : ReadCommandResponseBase
-        where TEntity : BaseEntity
-    {
-        protected readonly IQueryRepository<TEntity> _queryRepository;
-        protected readonly IMapper _mapper;
-
-        public ReadCommandBaseHandler(
-            IQueryRepository<TEntity> queryRepository,
-            IMapper mapper)
-        {
-            _queryRepository = queryRepository;
-            _mapper = mapper;
-        }
-
-        public virtual async Task<TReadCommandResponse> Handle(TReadCommand request, CancellationToken cancellationToken)
-        {
-            var result = await _queryRepository.GetAllAsync();
-            return _mapper.Map<TReadCommandResponse>(result);
-        }
-    }
-
     public abstract class UpdateCommandBaseHandler<TUpdateCommand, TEntity> :
-        IRequestHandler<TUpdateCommand, BaseEntity>
-        where TUpdateCommand : UpdateCommandBase
+        IRequestHandler<TUpdateCommand, TEntity>
+        where TUpdateCommand : UpdateCommandBase<TEntity>
         where TEntity : BaseEntity
     {
         protected readonly IPersistenceRepository<TEntity> _persistenceRepository;
@@ -72,10 +47,10 @@ namespace AL.Fiap.PosTech.TechChallenge.Application.CommandHandlers.Base
             _mapper = mapper;
         }
 
-        public virtual async Task<BaseEntity> Handle(TUpdateCommand request, CancellationToken cancellationToken)
+        public virtual async Task<TEntity> Handle(TUpdateCommand request, CancellationToken cancellationToken)
         {
             var entity = _mapper.Map<TEntity>(request);
-            await _persistenceRepository.UpdateAsync(entity);
+            await _persistenceRepository.SaveAsync(entity);
 
             return entity;
         }
@@ -87,23 +62,20 @@ namespace AL.Fiap.PosTech.TechChallenge.Application.CommandHandlers.Base
         where TEntity : BaseEntity
     {
         protected readonly IPersistenceRepository<TEntity> _persistenceRepository;
-        protected readonly IQueryRepository<TEntity> _queryRepository;
         protected readonly IMapper _mapper;
 
         protected DeleteCommandBaseHandler(
             IPersistenceRepository<TEntity> persistenceRepository,
-            IQueryRepository<TEntity> queryRepository,
             IMapper mapper)
         {
             _persistenceRepository = persistenceRepository;
-            _queryRepository = queryRepository;
             _mapper = mapper;
         }
 
         public virtual async Task Handle(TDeleteCommand request, CancellationToken cancellationToken)
         {
-            var dto = await _queryRepository.GetByIdAsync(request.Id);
-            await _persistenceRepository.DeleteAsync(dto);
+            var entity = await _persistenceRepository.GetAsync(request.Id);
+            await _persistenceRepository.DeleteAsync(entity);
         }
     }
 }

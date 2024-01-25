@@ -10,11 +10,13 @@ namespace AL.Fiap.PosTech.TechChallenge.Ports.Commands
 
         public string Description { get; set; } = null!;
 
+        public string ImgUrl { get; set; } = null!;
+
         public decimal Price { get; set; }
 
-        public int ProductCategoryId { get; set; }
+        public Guid ProductCategoryId { get; set; }
 
-        public ICollection<CreateProductIngredientCommand> ProductIngredients { get; set; } = new List<CreateProductIngredientCommand>();
+        public IEnumerable<Guid> Ingredients { get; set; } = new List<Guid>();
     }
 
     public sealed class CreateProductCommandValidator : AbstractValidator<CreateProductCommand>
@@ -30,11 +32,13 @@ namespace AL.Fiap.PosTech.TechChallenge.Ports.Commands
 
         public string Description { get; set; } = null!;
 
+        public string ImgUrl { get; set; } = null!;
+
         public decimal Price { get; set; }
 
-        public int ProductCategoryId { get; set; }
+        public Guid ProductCategoryId { get; set; }
 
-        public ICollection<CreateProductIngredientCommand> ProductIngredients { get; set; } = new List<CreateProductIngredientCommand>();
+        public IEnumerable<Guid> Ingredients { get; set; } = new List<Guid>();
     }
 
     public sealed class UpdateProductCommandValidator : AbstractValidator<UpdateProductCommand>

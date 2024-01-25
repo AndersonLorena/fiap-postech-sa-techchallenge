@@ -2,7 +2,7 @@
 using AL.Fiap.PosTech.TechChallenge.Domain.Entities;
 using AL.Fiap.PosTech.TechChallenge.Domain.Repositories;
 using AL.Fiap.PosTech.TechChallenge.Ports.Commands;
-using AL.Fiap.PosTech.TechChallenge.Ports.Queries;
+using AL.Fiap.PosTech.TechChallenge.Ports.Interfaces.Queries;
 using AutoMapper;
 
 namespace AL.Fiap.PosTech.TechChallenge.Application.CommandHandlers
@@ -37,7 +37,6 @@ namespace AL.Fiap.PosTech.TechChallenge.Application.CommandHandlers
             IMapper mapper)
             : base(
                 persistenceRepository,
-                queryRepository,
                 mapper)
         { }
     }

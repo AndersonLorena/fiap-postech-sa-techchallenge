@@ -10,6 +10,8 @@ namespace AL.Fiap.PosTech.TechChallenge.Ports.Commands
 
         public string Description { get; set; } = null!;
 
+        public string ImgUrl { get; set; } = null!;
+
         public decimal Price { get; set; }
     }
 
@@ -25,6 +27,8 @@ namespace AL.Fiap.PosTech.TechChallenge.Ports.Commands
         public string Name { get; set; } = null!;
 
         public string Description { get; set; } = null!;
+
+        public string ImgUrl { get; set; } = null!;
 
         public decimal Price { get; set; }
     }

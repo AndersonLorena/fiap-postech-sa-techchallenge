@@ -1,6 +1,7 @@
-using AL.Fiap.PosTech.TechChallenge.Application.Configurations;
+using AL.Fiap.PosTech.TechChallenge.Adapters.Drivens.HashService;
 using AL.Fiap.PosTech.TechChallenge.Adapters.EntityFramework.Configurations;
 using AL.Fiap.PosTech.TechChallenge.Adapters.Entrypoints.WebApi.Filters;
+using AL.Fiap.PosTech.TechChallenge.Application.Configurations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddCustomAutoMapperConfiguration();
 builder.Services.AddCustomFluentValidationConfiguration();
 builder.Services.AddCustomMediatRConfiguration();
+builder.Services.AddCustomHashServiceConfiguration();
 builder.Services.AddCustomSqlServerPersistenceConfiguration(builder.Configuration);
 
 // Add services to the container.

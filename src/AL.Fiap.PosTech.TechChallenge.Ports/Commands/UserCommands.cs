@@ -8,11 +8,11 @@ namespace AL.Fiap.PosTech.TechChallenge.Ports.Commands
     {
         public string Name { get; set; } = null!;
 
-        public string Nickname { get; set; } = null!;
-
         public string Login { get; set; } = null!;
 
         public string Password { get; set; } = null!;
+
+        public ICollection<Guid> Roles { get; set; } = new List<Guid>();
     }
 
     public sealed class CreateUserCommandValidator : AbstractValidator<CreateUserCommand>
@@ -26,11 +26,11 @@ namespace AL.Fiap.PosTech.TechChallenge.Ports.Commands
     {
         public string Name { get; set; } = null!;
 
-        public string Nickname { get; set; } = null!;
-
         public string Login { get; set; } = null!;
 
         public string Password { get; set; } = null!;
+
+        public ICollection<Guid> Roles { get; set; } = new List<Guid>();
     }
 
     public sealed class UpdateUserCommandValidator : AbstractValidator<UpdateUserCommand>

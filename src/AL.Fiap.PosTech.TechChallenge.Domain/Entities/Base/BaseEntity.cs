@@ -6,9 +6,9 @@
 
         public DateTime CreatedAt { get; set; }
 
-        public virtual int CreatedById { get; set; }
+        public virtual Guid CreatedById { get; set; }
 
-        public virtual UserEntity CreatedBy { get; set; } = null!;
+        public virtual UserEntity? CreatedBy { get; set; } = null!;
 
         public DateTime? UpdatedAt { get; set; }
 

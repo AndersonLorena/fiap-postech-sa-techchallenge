@@ -7,10 +7,6 @@ namespace AL.Fiap.PosTech.TechChallenge.Ports.Commands
     public sealed class CreateRoleCommand : CreateCommandBase<RoleEntity>
     {
         public string Name { get; set; } = null!;
-
-        public int? RoleTypeId { get; set; }
-
-        public string ImgUrl { get; set; } = null!;
     }
 
     public sealed class CreateRoleCommandValidator : AbstractValidator<CreateRoleCommand>
@@ -23,10 +19,6 @@ namespace AL.Fiap.PosTech.TechChallenge.Ports.Commands
     public sealed class UpdateRoleCommand : UpdateCommandBase<RoleEntity>
     {
         public string Name { get; set; } = null!;
-
-        public int? RoleTypeId { get; set; }
-
-        public string ImgUrl { get; set; } = null!;
     }
 
     public sealed class UpdateRoleCommandValidator : AbstractValidator<UpdateRoleCommand>

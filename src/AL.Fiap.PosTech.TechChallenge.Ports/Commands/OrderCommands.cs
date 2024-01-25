@@ -4,13 +4,16 @@ using FluentValidation;
 
 namespace AL.Fiap.PosTech.TechChallenge.Ports.Commands
 {
+    public sealed class OrderItem
+    {
+        public Guid ProductId { get; set; }
+
+        public IEnumerable<Guid> Ingredients { get; set; } = new List<Guid>();
+    }
+
     public sealed class CreateOrderCommand : CreateCommandBase<OrderEntity>
     {
-        public int OrderStatusId { get; set; }
-
-        public decimal TotalAmount { get; set; }
-
-        public ICollection<CreateOrderItemCommand> OrderItems { get; set; } = new List<CreateOrderItemCommand>();
+        public ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
     }
 
     public sealed class CreateOrderCommandValidator : AbstractValidator<CreateOrderCommand>
@@ -22,11 +25,9 @@ namespace AL.Fiap.PosTech.TechChallenge.Ports.Commands
 
     public sealed class UpdateOrderCommand : UpdateCommandBase<OrderEntity>
     {
-        public int OrderStatusId { get; set; }
-
         public decimal TotalAmount { get; set; }
 
-        public ICollection<CreateOrderItemCommand> OrderItems { get; set; } = new List<CreateOrderItemCommand>();
+        public ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
     }
 
     public sealed class UpdateOrderCommandValidator : AbstractValidator<UpdateOrderCommand>

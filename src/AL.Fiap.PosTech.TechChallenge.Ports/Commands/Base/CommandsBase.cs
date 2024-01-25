@@ -1,6 +1,4 @@
-﻿using AL.Fiap.PosTech.TechChallenge.Domain.Base;
-using AL.Fiap.PosTech.TechChallenge.Domain.Entities.Base;
-using MediatR;
+﻿using MediatR;
 
 namespace AL.Fiap.PosTech.TechChallenge.Ports.Commands.Base
 {

@@ -1,7 +1,7 @@
 ﻿using AL.Fiap.PosTech.TechChallenge.Adapters.Entrypoints.WebApi.Dtos.Base;
 using AL.Fiap.PosTech.TechChallenge.Domain.Entities.Base;
 using AL.Fiap.PosTech.TechChallenge.Ports.Commands.Base;
-using AL.Fiap.PosTech.TechChallenge.Ports.Queries;
+using AL.Fiap.PosTech.TechChallenge.Ports.Interfaces.Queries;
 using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -11,9 +11,9 @@ namespace AL.Fiap.PosTech.TechChallenge.Adapters.Entrypoints.WebApi.Controllers.
     [ApiController]
     [Route("[controller]")]
     public abstract class CrudBaseController<TCreateCommand, TReadDto, TUpdateCommand, TDeleteCommand, TEntity> : ControllerBase
-       where TCreateCommand : CreateCommandBase
+       where TCreateCommand : CreateCommandBase<TEntity>
        where TReadDto : BaseReadResponseDto
-       where TUpdateCommand : UpdateCommandBase
+       where TUpdateCommand : UpdateCommandBase<TEntity>
        where TDeleteCommand : DeleteCommandBase
        where TEntity : BaseEntity
     {
@@ -53,7 +53,7 @@ namespace AL.Fiap.PosTech.TechChallenge.Adapters.Entrypoints.WebApi.Controllers.
         [ProducesResponseType(typeof(string), StatusCodes.Status204NoContent)]
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(string), StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Get(int id)
+        public async Task<IActionResult> Get(Guid id)
         {
             var result = _mapper.Map<TReadDto>(
                 await _queryRepository.GetByIdAsync(id));
@@ -80,12 +80,13 @@ namespace AL.Fiap.PosTech.TechChallenge.Adapters.Entrypoints.WebApi.Controllers.
         [Produces("application/json")]
         [ProducesResponseType(typeof(string), StatusCodes.Status204NoContent)]
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(string), StatusCodes.Status409Conflict)]
         [ProducesResponseType(typeof(string), StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Put([FromRoute] int id, [FromBody] TUpdateCommand command)
+        public async Task<IActionResult> Put([FromRoute] Guid id, [FromBody] TUpdateCommand command)
         {
             command.Id = id;
-            var response = await _mediator.Send(command);
+            await _mediator.Send(command);
             return NoContent();
         }
 
@@ -93,9 +94,10 @@ namespace AL.Fiap.PosTech.TechChallenge.Adapters.Entrypoints.WebApi.Controllers.
         [Produces("application/json")]
         [ProducesResponseType(typeof(string), StatusCodes.Status204NoContent)]
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(string), StatusCodes.Status409Conflict)]
         [ProducesResponseType(typeof(string), StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Delete([FromRoute] int id, [FromBody] TDeleteCommand command)
+        public async Task<IActionResult> Delete([FromRoute] Guid id, [FromBody] TDeleteCommand command)
         {
             command.Id = id;
             await _mediator.Send(command);
