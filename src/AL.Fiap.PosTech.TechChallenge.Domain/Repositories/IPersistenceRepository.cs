@@ -2,12 +2,13 @@
 
 namespace AL.Fiap.PosTech.TechChallenge.Domain.Repositories
 {
-    public interface IPersistenceRepository<T> where T : BaseEntity
+    public interface IPersistenceRepository<TEntity>
+        where TEntity : BaseEntity
     {
-        Task AddAsync(T entity);
+        Task SaveAsync(TEntity entity);
 
-        Task UpdateAsync(T entity);
+        Task DeleteAsync(TEntity entity);
 
-        Task DeleteAsync(T entity);
+        Task<TEntity> GetAsync(Guid id);
     }
 }

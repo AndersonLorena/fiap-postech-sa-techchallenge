@@ -1,9 +1,8 @@
-﻿using AL.Fiap.PosTech.TechChallenge.Domain.Entities.Base;
-using AL.Fiap.PosTech.TechChallenge.Domain.ValueObjects;
+﻿using AL.Fiap.PosTech.TechChallenge.Adapters.Entrypoints.WebApi.Dtos.Base;
 
-namespace AL.Fiap.PosTech.TechChallenge.Domain.Entities
+namespace AL.Fiap.PosTech.TechChallenge.Adapters.Entrypoints.WebApi.Dtos
 {
-    public class UserEntity : BaseEntity
+    public partial class UserReadResponseDto : BaseReadResponseDto
     {
         public string Name { get; set; } = null!;
 
@@ -13,7 +12,7 @@ namespace AL.Fiap.PosTech.TechChallenge.Domain.Entities
 
         public string Password { get; set; } = null!;
 
-        public virtual CpfValueObject? Cpf { get; set; }
+        public long Cpf { get; set; }
 
         public new int? CreatedById { get; set; }
     }

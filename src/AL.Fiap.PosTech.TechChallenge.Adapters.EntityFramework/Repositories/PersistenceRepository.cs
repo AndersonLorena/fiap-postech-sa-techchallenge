@@ -5,9 +5,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AL.Fiap.PosTech.TechChallenge.Adapters.EntityFramework.Repositories
 {
-    public class PersistenceRepository<T> : IPersistenceRepository<T> where T : BaseEntity
+    public class PersistenceRepository<TEntity> : IPersistenceRepository<TEntity> 
+        where TEntity : BaseEntity
     {
-        public virtual async Task AddAsync(T entity)
+        public virtual async Task AddAsync(TEntity entity)
         {
             using (var context = new TechChallengeDbContext())
             {
@@ -16,24 +17,34 @@ namespace AL.Fiap.PosTech.TechChallenge.Adapters.EntityFramework.Repositories
             }
         }
 
-        public virtual async Task DeleteAsync(T entity)
+        public virtual async Task DeleteAsync(TEntity entity)
         {
             using (var context = new TechChallengeDbContext())
             {
-                context.Attach<T>(entity);
+                context.Attach<TEntity>(entity);
                 context.Entry(entity).State = EntityState.Modified;
                 await context.SaveChangesAsync();
             }
         }
 
-        public virtual async Task UpdateAsync(T entity)
+        public Task<TEntity> GetAsync(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task SaveAsync(TEntity entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public virtual async Task UpdateAsync(TEntity entity)
         {
             using (var context = new TechChallengeDbContext())
             {
                 if (context.Entry(entity).State == EntityState.Detached)
-                    context.Attach<T>(entity);
+                    context.Attach<TEntity>(entity);
 
-                context.Remove<T>(entity);
+                context.Remove<TEntity>(entity);
                 await context.SaveChangesAsync();
             }
         }

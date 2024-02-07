@@ -21,9 +21,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AL.Fiap.PosTech.TechChallen
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AL.Fiap.PosTech.TechChallenge.Domain", "src\AL.Fiap.PosTech.TechChallenge.Domain\AL.Fiap.PosTech.TechChallenge.Domain.csproj", "{CE2377F1-D559-4874-926F-5E9BA7FFE762}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.1 - Driver", "2.1 - Driver", "{6D564FEC-371D-4249-B964-A57A16691A92}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.1 - Drivers", "2.1 - Drivers", "{6D564FEC-371D-4249-B964-A57A16691A92}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.2 - Driven", "2.2 - Driven", "{423C47DC-F665-40F5-A070-F5DEF98216FA}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.2 - Drivens", "2.2 - Drivens", "{423C47DC-F665-40F5-A070-F5DEF98216FA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.2.1 - Persistence", "2.2.1 - Persistence", "{6D6C12C7-7AD6-4780-902D-A1536AC37676}"
 EndProject
@@ -41,7 +41,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.2.2 - Producers", "2.2.2 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AL.Fiap.PosTech.TechChallenge.Ports", "src\AL.Fiap.PosTech.TechChallenge.Ports\AL.Fiap.PosTech.TechChallenge.Ports.csproj", "{8F634868-791A-4B60-85D8-B997043213EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AL.Fiap.PosTech.TechChallenge.Test", "tests\AL.Fiap.PosTech.TechChallenge.Test\AL.Fiap.PosTech.TechChallenge.Test.csproj", "{08650285-37FF-4B1D-B3B2-298585BEC066}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AL.Fiap.PosTech.TechChallenge.Test", "tests\AL.Fiap.PosTech.TechChallenge.Test\AL.Fiap.PosTech.TechChallenge.Test.csproj", "{08650285-37FF-4B1D-B3B2-298585BEC066}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.2.3 - Services", "2.2.3 - Services", "{5BD0D17C-AE59-4E31-965F-D40D5B94DA24}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AL.Fiap.PosTech.TechChallenge.Adapters.Drivens.HashService", "src\AL.Fiap.PosTech.TechChallenge.Adapters.Drivens.HashService\AL.Fiap.PosTech.TechChallenge.Adapters.Drivens.HashService.csproj", "{C88A8CB9-B7C6-4EFB-8949-A9EB55B62FBC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,6 +77,10 @@ Global
 		{08650285-37FF-4B1D-B3B2-298585BEC066}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08650285-37FF-4B1D-B3B2-298585BEC066}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08650285-37FF-4B1D-B3B2-298585BEC066}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C88A8CB9-B7C6-4EFB-8949-A9EB55B62FBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C88A8CB9-B7C6-4EFB-8949-A9EB55B62FBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C88A8CB9-B7C6-4EFB-8949-A9EB55B62FBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C88A8CB9-B7C6-4EFB-8949-A9EB55B62FBC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -95,6 +103,8 @@ Global
 		{B26EC1C6-F160-42BF-BCDE-9B68E3671197} = {423C47DC-F665-40F5-A070-F5DEF98216FA}
 		{8F634868-791A-4B60-85D8-B997043213EF} = {5AA5D8A0-715D-4F0D-9A1A-A70E5E81DC1F}
 		{08650285-37FF-4B1D-B3B2-298585BEC066} = {59677FEE-2306-430D-A4EF-1972278FA441}
+		{5BD0D17C-AE59-4E31-965F-D40D5B94DA24} = {423C47DC-F665-40F5-A070-F5DEF98216FA}
+		{C88A8CB9-B7C6-4EFB-8949-A9EB55B62FBC} = {5BD0D17C-AE59-4E31-965F-D40D5B94DA24}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {836C28C1-D6A1-4100-94E7-AB62EFFE22AD}

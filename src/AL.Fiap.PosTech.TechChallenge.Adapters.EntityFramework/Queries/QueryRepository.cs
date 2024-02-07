@@ -1,6 +1,6 @@
 ﻿using AL.Fiap.PosTech.TechChallenge.Adapters.EntityFramework.DbContexts;
 using AL.Fiap.PosTech.TechChallenge.Domain.Entities.Base;
-using AL.Fiap.PosTech.TechChallenge.Ports.Queries;
+using AL.Fiap.PosTech.TechChallenge.Ports.Interfaces.Queries;
 using Microsoft.EntityFrameworkCore;
 
 namespace AL.Fiap.PosTech.TechChallenge.Adapters.EntityFramework.Queries
@@ -15,7 +15,7 @@ namespace AL.Fiap.PosTech.TechChallenge.Adapters.EntityFramework.Queries
             }
         }
 
-        public async Task<T> GetByIdAsync(int id)
+        public async Task<T> GetByIdAsync(Guid id)
         {
             using (var context = new TechChallengeDbContext())
             {
